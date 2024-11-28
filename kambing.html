@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Perkambingan</title>
+  <style>
+    /* Reset */
+    body, h1, h2, p, ul, li, a, form, input, textarea, button {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Header dan Menu */
+    header {
+      background-color: rgba(76, 175, 80, 0.9); /* Hijau transparan */
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      background-color: #333;
+      position: relative;
+    }
+
+    .menu > li {
+      position: relative;
+      margin: 0 15px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #4CAF50;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #444;
+      list-style: none;
+      padding: 10px 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown li {
+      margin: 0;
+    }
+
+    .dropdown a {
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .menu li:hover .dropdown {
+      display: block;
+    }
+
+    /* Konten Utama */
+    main {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Latar belakang putih transparan */
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    /* Formulir */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li id="home-menu"><a href="#home">Home</a></li>
+        <li id="about-menu">
+          <a href="#about">Tentang Kami</a>
+          <ul class="dropdown">
+            <li><a href="#visi">Visi</a></li>
+            <li><a href="#misi">Misi</a></li>
+            <li><a href="#tim">Tim Kami</a></li>
+          </ul>
+        </li>
+        <li id="contact-menu">
+          <a href="#contact">Kontak</a>
+          <ul class="dropdown">
+            <li><a href="#lokasi">Lokasi</a></li>
+            <li><a href="#jam">Jam Operasional</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <h1>Selamat Datang di Perkambingan</h1>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>Home</h2>
+      <p>Perkambingan adalah tempat terbaik untuk mendapatkan kambing berkualitas. Kami menyediakan kambing untuk berbagai kebutuhan, seperti kurban, aqiqah, dan peternakan.</p>
+      <img src="kambing-etawa.jpeg" alt="kambing-etawa">
+    </section>
+
+    <section id="about">
+      <h2>Tentang Kami</h2>
+      <p>Kami adalah peternakan kambing yang berdedikasi untuk menyediakan kambing terbaik. Dengan pengalaman bertahun-tahun, kami memastikan setiap kambing yang kami jual sehat dan berkualitas tinggi.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Kontak</h2>
+      <form id="contactForm">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Pesan:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Kirim</button>
+      </form>
+      <div id="formMessage"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Perkambingan. Semua Hak Dilindungi.</p>
+  </footer>
+
+  <script>
+    // Menangani pengiriman formulir kontak
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const formMessage = document.getElementById("formMessage");
+
+      if (name && email && message) {
+        formMessage.textContent = `Terima kasih, ${name}. Pesan Anda telah diterima!`;
+        formMessage.style.color = "green";
+        this.reset();
+      } else {
+        formMessage.textContent = "Mohon isi semua field!";
+        formMessage.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
+<section id="contact">
+  <h2>Kontak</h2>
+  <form id="contactForm">
+    <label for="name">Nama:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Pesan:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Kirim</button>
+  </form>
+  <div id="formMessage"></div>
+
+  <h3>Lokasi</h3>
+  <p>Alamat: Jl. Peternakan No. 123, Desa Sejahtera, Kabupaten Makmur</p>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.857835834736!2d115.21543581478423!3d-8.674928393765735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd24752d309f6f9%3A0xa57b0e0f7d67e7ad!2sBali!5e0!3m2!1sen!2sid!4v1681234567890!5m2!1sen!2sid"
+    width="100%"
+    height="300"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</section>
